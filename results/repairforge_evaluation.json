@@ -1,0 +1,49 @@
+{
+    "project": "RepairForge AI",
+    "experiment": "Single bug repair",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "inference_time_seconds": 7.281,
+    "bugs_attempted": 1,
+    "bugs_reproduced": 1,
+    "patches_generated": 1,
+    "patches_verified": 1,
+    "baseline_tests_passed": 2,
+    "patched_tests_passed": 3,
+    "total_tests": 3,
+    "repair_status": "VERIFIED",
+    "baseline_results": [
+        {
+            "test": "normal_input",
+            "passed": true,
+            "observed": "4.0"
+        },
+        {
+            "test": "single_input",
+            "passed": true,
+            "observed": "10.0"
+        },
+        {
+            "test": "empty_input",
+            "passed": false,
+            "observed": "ZeroDivisionError: division by zero"
+        }
+    ],
+    "patched_results": [
+        {
+            "test": "normal_input",
+            "passed": true,
+            "observed": "4.0"
+        },
+        {
+            "test": "single_input",
+            "passed": true,
+            "observed": "10.0"
+        },
+        {
+            "test": "empty_input",
+            "passed": true,
+            "observed": "ValueError: Cannot calculate average of an empty list."
+        }
+    ],
+    "patch": "def calculate_average(numbers):\n    if not numbers:  # Check if the list is empty\n        raise ValueError(\"Cannot calculate average of an empty list.\")\n\n    return sum(numbers) / len(numbers)"
+}
