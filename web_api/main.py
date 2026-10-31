@@ -6,7 +6,9 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import FileResponse, JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -66,6 +68,17 @@ app.include_router(skills.router)
 def get_root_health():
     """Root health alias for platform health checkers."""
     return health.get_health()
+
+
+@app.exception_handler(StarletteHTTPException)
+async def spa_404_handler(request: Request, exc: StarletteHTTPException):
+    """Fallback handler to route client-side SPA routes to index.html."""
+    if exc.status_code == 404:
+        if not request.url.path.startswith("/api") and not request.url.path.startswith("/docs") and not request.url.path.startswith("/openapi.json"):
+            index_path = dist_dir / "index.html"
+            if index_path.exists():
+                return FileResponse(str(index_path))
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 
 # Mount frontend production build if present, otherwise provide root API status
