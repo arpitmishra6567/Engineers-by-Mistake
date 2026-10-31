@@ -75,6 +75,18 @@ For comprehensive details on components, data flow, and interfaces, see [ARCHITE
 
 ---
 
+## 5.1. Forge Command Web Interface & Cloud Deployment
+
+Forge Command is the dedicated full-stack developer workstation for RepairForge AI:
+- **Frontend (Vercel Ready)**: React 18, Vite, Tailwind CSS, TanStack Query, and Lucide Icons with automatic SPA rewrites and CDN asset caching.
+- **Backend (Railway Ready)**: FastAPI ASGI layer containerized with Python 3.11, dynamic `$PORT` binding, platform health check (`/api/health`), and automated Vercel CORS configuration.
+
+Detailed guides:
+- [Forge Command Web App Guide](docs/WEB_APP.md)
+- [Railway & Vercel Deployment Guide](docs/DEPLOYMENT.md)
+
+---
+
 ## 6. Workflow Lifecycle
 
 Every repair adheres to a 7-phase checkpoint lifecycle:
@@ -296,7 +308,8 @@ Full details are documented in [docs/SECURITY.md](file:///c:/Users/arpit/Bugrepo
 - [ ] **Multi-language AST Parsing**: Tree-sitter integration for TypeScript, Go, and Rust syntax validation.
 - [ ] **Benchmark Harness**: Automated evaluation runner for SWE-bench Lite.
 - [ ] **GitHub Pull Request Integration**: Automated bot to draft PRs with attached verification evidence.
-- [ ] **Web Inspection Dashboard**: Optional local UI to visualize state transitions and test diffs.
+- [x] **Web Inspection Dashboard**: Forge Command React + Vite dark IDE interface.
+- [x] **Cloud Deployment**: Vercel SPA deployment + Railway containerized backend.
 
 ---
 

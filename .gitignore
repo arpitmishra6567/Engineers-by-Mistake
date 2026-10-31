@@ -26,6 +26,10 @@ venv/
 ENV/
 env/
 
+# Frontend dependencies and build outputs
+frontend/node_modules/
+frontend/dist/
+
 # Testing and coverage
 .pytest_cache/
 .coverage
@@ -48,7 +52,7 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Results outputs (preserve .gitkeep)
+# Results outputs (preserve .gitkeep and benchmark files)
 results/*
 !results/.gitkeep
-
+!results/repairforge_evaluation.json

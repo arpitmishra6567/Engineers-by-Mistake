@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0D0F14;
+    --sidebar: #11131A;
+    --surface: #181B24;
+    --elevated: #202431;
+    --border: #292D39;
+    --text: #F4F4F5;
+    --muted: #A1A1AA;
+  }
+
+  html.light {
+    --bg: #F8FAFC;
+    --sidebar: #FFFFFF;
+    --surface: #FFFFFF;
+    --elevated: #F1F5F9;
+    --border: #E2E8F0;
+    --text: #0F172A;
+    --muted: #64748B;
+  }
+}
+
+/* Custom scrollbars for technical code panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292D39;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B4252;
+}
+
